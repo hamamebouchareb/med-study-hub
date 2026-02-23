@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-illustration.png";
 import StatsCounter from "./StatsCounter";
@@ -43,20 +44,24 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
-              <Button
-                size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-glow-primary text-base px-8"
-              >
-                S'inscrire gratuitement
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-border text-foreground hover:bg-secondary text-base px-8"
-              >
-                Se connecter
-              </Button>
+              <Link to="/signup">
+                <Button
+                  size="lg"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-glow-primary text-base px-8"
+                >
+                  S'inscrire gratuitement
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link to="/login">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-border text-foreground hover:bg-secondary text-base px-8"
+                >
+                  Se connecter
+                </Button>
+              </Link>
             </div>
 
             <StatsCounter />
