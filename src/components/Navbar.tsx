@@ -6,11 +6,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@/contexts/AuthContext";
 
 const navLinks = [
-  { label: "Accueil", href: "#accueil" },
-  { label: "Fonctionnalités", href: "#fonctionnalites" },
-  { label: "Abonnement", href: "#abonnement" },
-  { label: "Contact", href: "#contact" },
-];
+{ label: "Accueil", href: "#accueil" },
+{ label: "Fonctionnalités", href: "#fonctionnalites" },
+{ label: "Abonnement", href: "#abonnement" },
+{ label: "Contact", href: "#contact" }];
+
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -23,30 +23,30 @@ const Navbar = () => {
           <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center">
             <span className="font-heading text-lg font-bold text-primary-foreground">H</span>
           </div>
-          <span className="font-heading text-xl font-bold text-foreground">Hamame</span>
+          <span className="font-heading text-xl font-bold text-foreground">Hamame Platform   </span>
         </a>
 
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
+          {navLinks.map((link) =>
+          <a
+            key={link.href}
+            href={link.href}
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+
               {link.label}
             </a>
-          ))}
+          )}
         </div>
 
         <div className="hidden md:flex items-center gap-3">
-          {session ? (
-            <Link to="/dashboard">
+          {session ?
+          <Link to="/dashboard">
               <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
                 Tableau de bord
               </Button>
-            </Link>
-          ) : (
-            <>
+            </Link> :
+
+          <>
               <Link to="/login">
                 <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
                   Se connecter
@@ -58,45 +58,45 @@ const Navbar = () => {
                 </Button>
               </Link>
             </>
-          )}
+          }
         </div>
 
         <button
           className="md:hidden text-foreground"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
+          onClick={() => setMobileOpen(!mobileOpen)}>
+
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-card border-b border-border"
-          >
+        {mobileOpen &&
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          className="md:hidden bg-card border-b border-border">
+
             <div className="flex flex-col p-4 gap-3">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-muted-foreground hover:text-foreground py-2 transition-colors"
-                  onClick={() => setMobileOpen(false)}
-                >
+              {navLinks.map((link) =>
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-muted-foreground hover:text-foreground py-2 transition-colors"
+              onClick={() => setMobileOpen(false)}>
+
                   {link.label}
                 </a>
-              ))}
+            )}
               <div className="flex gap-3 pt-2">
-                {session ? (
-                  <Link to="/dashboard" className="flex-1" onClick={() => setMobileOpen(false)}>
+                {session ?
+              <Link to="/dashboard" className="flex-1" onClick={() => setMobileOpen(false)}>
                     <Button size="sm" className="w-full bg-primary text-primary-foreground">
                       Tableau de bord
                     </Button>
-                  </Link>
-                ) : (
-                  <>
+                  </Link> :
+
+              <>
                     <Link to="/login" className="flex-1" onClick={() => setMobileOpen(false)}>
                       <Button variant="ghost" size="sm" className="w-full text-muted-foreground">
                         Se connecter
@@ -108,14 +108,14 @@ const Navbar = () => {
                       </Button>
                     </Link>
                   </>
-                )}
+              }
               </div>
             </div>
           </motion.div>
-        )}
+        }
       </AnimatePresence>
-    </nav>
-  );
+    </nav>);
+
 };
 
 export default Navbar;
