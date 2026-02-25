@@ -1,5 +1,5 @@
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
-import { BookOpen, BarChart3, Brain, HelpCircle } from "lucide-react";
+import { BookOpen, BarChart3, Brain, HelpCircle, CalendarCheck2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -8,6 +8,7 @@ const quickActions = [
   { label: "Bibliothèque", icon: BookOpen, path: "/dashboard/library", color: "bg-accent/10 text-accent" },
   { label: "Statistiques", icon: BarChart3, path: "/dashboard/statistics", color: "bg-primary/10 text-primary" },
   { label: "Mind Maps", icon: Brain, path: "/dashboard/mindmaps", color: "bg-accent/10 text-accent" },
+  { label: "Planificateur", icon: CalendarCheck2, path: "/dashboard/study-planner", color: "bg-primary/10 text-primary" },
 ];
 
 const container = {
@@ -37,7 +38,7 @@ const DashboardHome = () => {
           variants={container}
           initial="hidden"
           animate="show"
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4"
         >
           {quickActions.map((action) => (
             <motion.div key={action.path} variants={item}>

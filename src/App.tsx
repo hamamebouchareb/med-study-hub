@@ -24,6 +24,7 @@ import Notifications from "./pages/dashboard/Notifications";
 import Subscription from "./pages/dashboard/Subscription";
 import Support from "./pages/dashboard/Support";
 import Profile from "./pages/dashboard/Profile";
+import StudyPlanner from "./pages/dashboard/StudyPlanner";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -59,6 +60,7 @@ const App = () => (
                 <Route path="/dashboard/subscription" element={<DashboardRoute><Subscription /></DashboardRoute>} />
                 <Route path="/dashboard/support" element={<DashboardRoute><Support /></DashboardRoute>} />
                 <Route path="/dashboard/profile" element={<DashboardRoute><Profile /></DashboardRoute>} />
+                <Route path="/dashboard/study-planner" element={<DashboardRoute><StudyPlanner /></DashboardRoute>} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </SubscriptionProvider>
