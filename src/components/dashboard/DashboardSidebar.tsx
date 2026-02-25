@@ -14,6 +14,7 @@ import {
   CreditCard,
   LifeBuoy,
   UserCircle,
+  CalendarCheck2,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -32,6 +33,7 @@ const menuItems = [
   { label: "Abonnement", icon: CreditCard, path: "/dashboard/subscription" },
   { label: "Support", icon: LifeBuoy, path: "/dashboard/support" },
   { label: "Profil", icon: UserCircle, path: "/dashboard/profile" },
+  { label: "Planificateur", icon: CalendarCheck2, path: "/dashboard/study-planner" },
 ];
 
 const DashboardSidebar = () => {
