@@ -16,8 +16,10 @@ import {
   UserCircle,
   ChevronLeft,
   ChevronRight,
+  X,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
 
 const menuItems = [
   { label: "Accueil", icon: Home, path: "/dashboard" },
@@ -34,74 +36,117 @@ const menuItems = [
   { label: "Profil", icon: UserCircle, path: "/dashboard/profile" },
 ];
 
+interface SidebarNavProps {
+  collapsed?: boolean;
+  onNavigate?: () => void;
+}
+
+const SidebarNav = ({ collapsed = false, onNavigate }: SidebarNavProps) => {
+  const location = useLocation();
+
+  return (
+    <nav className="flex-1 overflow-y-auto py-4 px-2 space-y-1">
+      {menuItems.map((item) => {
+        const isActive = location.pathname === item.path;
+        return (
+          <Link
+            key={item.path}
+            to={item.path}
+            onClick={onNavigate}
+            className={cn(
+              "relative flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 group",
+              isActive
+                ? "text-primary-foreground"
+                : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+            )}
+          >
+            {isActive && (
+              <motion.div
+                layoutId="sidebar-active"
+                className="absolute inset-0 rounded-xl bg-primary shadow-glow-primary"
+                transition={{ type: "spring", stiffness: 350, damping: 30 }}
+              />
+            )}
+            <item.icon className="relative z-10 w-5 h-5 shrink-0" />
+            <AnimatePresence>
+              {!collapsed && (
+                <motion.span
+                  initial={{ opacity: 0, width: 0 }}
+                  animate={{ opacity: 1, width: "auto" }}
+                  exit={{ opacity: 0, width: 0 }}
+                  className="relative z-10 whitespace-nowrap overflow-hidden"
+                >
+                  {item.label}
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </Link>
+        );
+      })}
+    </nav>
+  );
+};
+
+const SidebarLogo = ({ collapsed = false }: { collapsed?: boolean }) => (
+  <div className="flex items-center gap-2 h-16 px-4 border-b border-border/50 shrink-0">
+    <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shrink-0">
+      <span className="font-heading text-lg font-bold text-primary-foreground">H</span>
+    </div>
+    <AnimatePresence>
+      {!collapsed && (
+        <motion.span
+          initial={{ opacity: 0, width: 0 }}
+          animate={{ opacity: 1, width: "auto" }}
+          exit={{ opacity: 0, width: 0 }}
+          className="font-heading text-xl font-bold text-foreground whitespace-nowrap overflow-hidden"
+        >
+          Hamame
+        </motion.span>
+      )}
+    </AnimatePresence>
+  </div>
+);
+
+/* ─── Mobile Sidebar (Sheet) ─── */
+export const MobileSidebar = ({
+  open,
+  onOpenChange,
+}: {
+  open: boolean;
+  onOpenChange: (v: boolean) => void;
+}) => {
+  return (
+    <Sheet open={open} onOpenChange={onOpenChange}>
+      <SheetContent side="left" className="w-[280px] p-0 bg-card border-r border-border/50">
+        <div className="flex flex-col h-full">
+          <div className="flex items-center justify-between pr-2">
+            <SidebarLogo />
+            <button
+              onClick={() => onOpenChange(false)}
+              className="w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+          <SidebarNav onNavigate={() => onOpenChange(false)} />
+        </div>
+      </SheetContent>
+    </Sheet>
+  );
+};
+
+/* ─── Desktop Sidebar ─── */
 const DashboardSidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const location = useLocation();
 
   return (
     <motion.aside
       animate={{ width: collapsed ? 72 : 260 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="fixed left-0 top-0 bottom-0 z-40 flex flex-col bg-card border-r border-border/50 overflow-hidden"
+      className="hidden md:flex fixed left-0 top-0 bottom-0 z-40 flex-col bg-card border-r border-border/50 overflow-hidden"
     >
-      {/* Logo */}
-      <div className="flex items-center gap-2 h-16 px-4 border-b border-border/50 shrink-0">
-        <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shrink-0">
-          <span className="font-heading text-lg font-bold text-primary-foreground">H</span>
-        </div>
-        <AnimatePresence>
-          {!collapsed && (
-            <motion.span
-              initial={{ opacity: 0, width: 0 }}
-              animate={{ opacity: 1, width: "auto" }}
-              exit={{ opacity: 0, width: 0 }}
-              className="font-heading text-xl font-bold text-foreground whitespace-nowrap overflow-hidden"
-            >
-              Hamame
-            </motion.span>
-          )}
-        </AnimatePresence>
-      </div>
-
-      {/* Menu */}
-      <nav className="flex-1 overflow-y-auto py-4 px-2 space-y-1">
-        {menuItems.map((item) => {
-          const isActive = location.pathname === item.path;
-          return (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={cn(
-                "relative flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 group",
-                isActive
-                  ? "text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-              )}
-            >
-              {isActive && (
-                <motion.div
-                  layoutId="sidebar-active"
-                  className="absolute inset-0 rounded-xl bg-primary shadow-glow-primary"
-                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                />
-              )}
-              <item.icon className="relative z-10 w-5 h-5 shrink-0" />
-              <AnimatePresence>
-                {!collapsed && (
-                  <motion.span
-                    initial={{ opacity: 0, width: 0 }}
-                    animate={{ opacity: 1, width: "auto" }}
-                    exit={{ opacity: 0, width: 0 }}
-                    className="relative z-10 whitespace-nowrap overflow-hidden"
-                  >
-                    {item.label}
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </Link>
-          );
-        })}
-      </nav>
+      <SidebarLogo collapsed={collapsed} />
+      <SidebarNav collapsed={collapsed} />
 
       {/* Collapse toggle */}
       <div className="px-2 pb-4 shrink-0">
