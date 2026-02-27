@@ -1,7 +1,7 @@
 import { useAuth } from "@/contexts/AuthContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useNavigate } from "react-router-dom";
-import { Bell, Sun, Moon, LogOut, User, Settings } from "lucide-react";
+import { Bell, Sun, Moon, LogOut, User, Settings, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -11,6 +11,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useEffect, useRef } from "react";
+
+interface DashboardTopbarProps {
+  onMenuClick?: () => void;
+}
 
 const ParticleCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -75,7 +79,7 @@ const ParticleCanvas = () => {
   );
 };
 
-const DashboardTopbar = () => {
+const DashboardTopbar = ({ onMenuClick }: DashboardTopbarProps) => {
   const { user, signOut } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
@@ -95,12 +99,23 @@ const DashboardTopbar = () => {
   return (
     <header className="sticky top-0 z-30 h-16 border-b border-border/50 bg-card/80 backdrop-blur-xl">
       <ParticleCanvas />
-      <div className="relative z-10 flex items-center justify-between h-full px-6">
-        <h2 className="font-heading text-lg font-bold text-foreground">
-          Tableau de bord
-        </h2>
-
+      <div className="relative z-10 flex items-center justify-between h-full px-4 md:px-6">
         <div className="flex items-center gap-2">
+          {/* Mobile hamburger */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onMenuClick}
+            className="md:hidden text-muted-foreground hover:text-foreground rounded-xl"
+          >
+            <Menu className="w-5 h-5" />
+          </Button>
+          <h2 className="font-heading text-lg font-bold text-foreground">
+            Tableau de bord
+          </h2>
+        </div>
+
+        <div className="flex items-center gap-1 md:gap-2">
           {/* Theme toggle */}
           <Button
             variant="ghost"
