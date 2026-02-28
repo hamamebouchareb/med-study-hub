@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@/contexts/AuthContext";
+import hamameLogo from "@/assets/hamame-logo.png";
 
 const navLinks = [
 { label: "Accueil", href: "#accueil" },
@@ -20,10 +21,8 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-glass border-b border-border/50">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <a href="#accueil" className="flex items-center gap-2">
-          <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center">
-            <span className="font-heading text-lg font-bold text-primary-foreground">H</span>
-          </div>
-          <span className="font-heading text-xl font-bold text-foreground">Hamame Platform   </span>
+          <img src={hamameLogo} alt="Hamame Platform" className="w-9 h-9 rounded-lg object-cover" />
+          <span className="font-heading text-xl font-bold text-foreground">Hamame</span>
         </a>
 
         <div className="hidden md:flex items-center gap-8">

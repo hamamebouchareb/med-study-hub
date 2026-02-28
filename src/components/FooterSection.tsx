@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import hamameLogo from "@/assets/hamame-logo.png";
 
 const FooterSection = () => {
   return (
@@ -8,9 +9,7 @@ const FooterSection = () => {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center">
-                <span className="font-heading text-lg font-bold text-primary-foreground">H</span>
-              </div>
+              <img src={hamameLogo} alt="Hamame" className="w-9 h-9 rounded-lg object-cover" />
               <span className="font-heading text-xl font-bold text-foreground">Hamame</span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
