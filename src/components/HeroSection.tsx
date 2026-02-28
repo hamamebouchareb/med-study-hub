@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-illustration.png";
 import StatsCounter from "./StatsCounter";
+
+const disciplines = ["Médecine", "Ingénierie", "Sciences", "Business", "Technologie"];
 
 const HeroSection = () => {
   return (
@@ -31,17 +33,34 @@ const HeroSection = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <p className="text-primary font-medium text-sm tracking-widest uppercase mb-4">
-              Plateforme éducative algérienne
-            </p>
+            <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1.5 mb-6">
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span className="text-primary font-medium text-sm">Plateforme éducative algérienne propulsée par l'IA</span>
+            </div>
+
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
-              Préparez votre{" "}
-              <span className="text-gradient-primary">réussite</span>{" "}
-              en médecine
+              Votre écosystème{" "}
+              <span className="text-gradient-primary">d'apprentissage</span>{" "}
+              intelligent
             </h1>
-            <p className="text-muted-foreground text-lg md:text-xl max-w-lg mb-8 leading-relaxed">
-              Hamame vous offre une expérience d'apprentissage interactive et efficace, axée sur des QCMs corrigés et soigneusement commentés par des experts.
+            <p className="text-muted-foreground text-lg md:text-xl max-w-lg mb-6 leading-relaxed">
+              Hamame vous accompagne dans toutes les disciplines avec des QCMs corrigés, des analyses de performance et des outils d'apprentissage adaptatifs.
             </p>
+
+            {/* Discipline tags */}
+            <div className="flex flex-wrap gap-2 mb-8">
+              {disciplines.map((d, i) => (
+                <motion.span
+                  key={d}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.5 + i * 0.1 }}
+                  className="text-xs font-medium px-3 py-1.5 rounded-full bg-secondary border border-border/50 text-secondary-foreground"
+                >
+                  {d}
+                </motion.span>
+              ))}
+            </div>
 
             <div className="flex flex-wrap gap-4 mb-12">
               <Link to="/signup">
@@ -49,7 +68,7 @@ const HeroSection = () => {
                   size="lg"
                   className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-glow-primary text-base px-8"
                 >
-                  S'inscrire gratuitement
+                  Commencer gratuitement
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
@@ -78,7 +97,7 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl scale-75" />
               <img
                 src={heroImage}
-                alt="Hamame - Plateforme éducative médicale"
+                alt="Hamame - Écosystème éducatif intelligent"
                 className="relative w-full max-w-xl animate-float"
               />
             </div>

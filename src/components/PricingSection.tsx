@@ -41,7 +41,7 @@ const plans = [
     features: [
       "Tout le plan Premium",
       "Accès anticipé aux nouveautés",
-      "Cas cliniques exclusifs",
+      "Contenu exclusif avancé",
       "Groupe d'étude privé",
       "Certificat de complétion",
     ],

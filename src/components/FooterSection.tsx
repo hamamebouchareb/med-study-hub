@@ -13,7 +13,7 @@ const FooterSection = () => {
               <span className="font-heading text-xl font-bold text-foreground">Hamame</span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              La plateforme éducative algérienne pour les futurs élites en médecine et tous les domaines.
+              La plateforme éducative algérienne propulsée par l'IA pour les futurs élites dans toutes les disciplines.
             </p>
           </div>
 
