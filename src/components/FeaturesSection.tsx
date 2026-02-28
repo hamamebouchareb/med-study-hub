@@ -20,8 +20,8 @@ const features = [
     icon: BookOpen,
     title: "QCMs Corrigés & Commentés",
     description:
-      "Chaque question inclut une correction détaillée et un commentaire d'experts médicaux pour une compréhension approfondie.",
-    highlights: ["Corrections détaillées", "Commentaires d'experts", "Cas cliniques"],
+      "Chaque question inclut une correction détaillée et un commentaire d'experts pour une compréhension approfondie.",
+    highlights: ["Corrections détaillées", "Commentaires d'experts", "Exercices pratiques"],
   },
   {
     icon: Palette,
@@ -66,13 +66,13 @@ const FeaturesSection = () => {
           className="text-center mb-16"
         >
           <p className="text-primary font-medium text-sm tracking-widest uppercase mb-3">
-            À la découverte de nouveaux modules !
+            Outils puissants pour chaque discipline
           </p>
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
             Fonctionnalités
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Hamame se distingue par son engagement envers l'efficacité de l'apprentissage médical en vous offrant un ensemble de fonctionnalités puissantes.
+            Hamame vous offre un ensemble d'outils conçus pour optimiser votre apprentissage, quelle que soit votre spécialité.
           </p>
         </motion.div>
 
