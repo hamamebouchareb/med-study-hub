@@ -90,7 +90,7 @@ const SidebarNav = ({ collapsed = false, onNavigate }: SidebarNavProps) => {
 
 const SidebarLogo = ({ collapsed = false }: { collapsed?: boolean }) => (
   <div className="flex items-center gap-2 h-16 px-4 border-b border-border/50 shrink-0">
-    <img src={hamameLogo} alt="Hamame" className="w-9 h-9 rounded-xl object-cover shrink-0" />
+    <img src={hamameLogo} alt="Hamame" className="w-11 h-11 rounded-xl object-cover shrink-0" />
     <AnimatePresence>
       {!collapsed && (
         <motion.span

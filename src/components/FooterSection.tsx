@@ -9,7 +9,7 @@ const FooterSection = () => {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <img src={hamameLogo} alt="Hamame" className="w-9 h-9 rounded-lg object-cover" />
+              <img src={hamameLogo} alt="Hamame" className="w-11 h-11 rounded-lg object-cover" />
               <span className="font-heading text-xl font-bold text-foreground">Hamame</span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">

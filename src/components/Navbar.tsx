@@ -21,7 +21,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-glass border-b border-border/50">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <a href="#accueil" className="flex items-center gap-2">
-          <img src={hamameLogo} alt="Hamame Platform" className="w-9 h-9 rounded-lg object-cover" />
+          <img src={hamameLogo} alt="Hamame Platform" className="w-11 h-11 rounded-lg object-cover" />
           <span className="font-heading text-xl font-bold text-foreground">Hamame</span>
         </a>
 
