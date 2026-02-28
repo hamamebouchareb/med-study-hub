@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
+import hamameLogo from "@/assets/hamame-logo.png";
 
 const menuItems = [
   { label: "Accueil", icon: Home, path: "/dashboard" },
@@ -89,9 +90,7 @@ const SidebarNav = ({ collapsed = false, onNavigate }: SidebarNavProps) => {
 
 const SidebarLogo = ({ collapsed = false }: { collapsed?: boolean }) => (
   <div className="flex items-center gap-2 h-16 px-4 border-b border-border/50 shrink-0">
-    <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shrink-0">
-      <span className="font-heading text-lg font-bold text-primary-foreground">H</span>
-    </div>
+    <img src={hamameLogo} alt="Hamame" className="w-9 h-9 rounded-xl object-cover shrink-0" />
     <AnimatePresence>
       {!collapsed && (
         <motion.span
