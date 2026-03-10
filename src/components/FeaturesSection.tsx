@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Settings2, BarChart3, Palette, BookOpen, Clock, RefreshCw } from "lucide-react";
+import { Settings2, BarChart3, Palette, BookOpen, Clock, RefreshCw, CalendarCheck2 } from "lucide-react";
 
 const features = [
   {
@@ -43,6 +43,13 @@ const features = [
     description:
       "Accédez à Hamame depuis n'importe quel appareil — ordinateur, tablette ou smartphone.",
     highlights: ["Responsive", "Synchronisation", "Accès partout"],
+  },
+  {
+    icon: CalendarCheck2,
+    title: "Planificateur d'Étude",
+    description:
+      "Structurez vos objectifs journaliers avec checklist intelligente, timer focus et échéances clés.",
+    highlights: ["Checklist active", "Timer focus", "Rappels d'échéance"],
   },
 ];
 
